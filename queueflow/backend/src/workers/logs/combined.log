@@ -1,0 +1,12 @@
+15:12:48 [[32minfo[39m] [32mWorker worker-6e87bf53 starting with concurrency 3[39m
+15:12:48 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+15:12:48 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+15:12:48 [[32minfo[39m] [32mWorker worker-6e87bf53 slot 1 polling...[39m
+15:12:48 [[32minfo[39m] [32mWorker worker-6e87bf53 slot 0 polling...[39m
+15:12:48 [[32minfo[39m] [32mWorker worker-6e87bf53 slot 2 polling...[39m
+15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada starting with concurrency 3[39m
+15:24:23 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+15:24:23 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada slot 1 polling...[39m
+15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada slot 0 polling...[39m
+15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada slot 2 polling...[39m

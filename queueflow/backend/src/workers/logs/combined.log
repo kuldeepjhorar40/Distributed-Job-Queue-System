@@ -10,3 +10,10 @@
 15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada slot 1 polling...[39m
 15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada slot 0 polling...[39m
 15:24:23 [[32minfo[39m] [32mWorker worker-afd96ada slot 2 polling...[39m
+16:57:46 [[33mwarn[39m] [33mRedis retry attempt 1, delay 500ms[39m
+16:57:46 [[31merror[39m] [31mRedis error:[39m
+16:57:46 [[33mwarn[39m] [33mRedis retry attempt 1, delay 500ms[39m
+16:57:46 [[33mwarn[39m] [33mRedis retry attempt 1, delay 500ms[39m
+16:57:46 [[33mwarn[39m] [33mRedis retry attempt 1, delay 500ms[39m
+16:57:46 [[33mwarn[39m] [33mRedis reconnecting...[39m
+16:57:47 [[32minfo[39m] [32mRedis connected at localhost:6379[39m

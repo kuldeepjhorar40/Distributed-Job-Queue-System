@@ -2,3 +2,39 @@
 15:18:44 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
 15:19:01 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
 15:19:01 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:04:30 [[32minfo[39m] [32mWorker worker-5cc423a6 starting with concurrency 3[39m
+22:04:30 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+22:04:30 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:04:30 [[32minfo[39m] [32mWorker worker-5cc423a6 slot 0 polling...[39m
+22:04:30 [[32minfo[39m] [32mWorker worker-5cc423a6 slot 1 polling...[39m
+22:04:30 [[32minfo[39m] [32mWorker worker-5cc423a6 slot 2 polling...[39m
+22:04:51 [[32minfo[39m] [32mWorker worker-46daca4d starting with concurrency 3[39m
+22:04:51 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+22:04:51 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:04:52 [[32minfo[39m] [32mWorker worker-46daca4d slot 0 polling...[39m
+22:04:52 [[32minfo[39m] [32mWorker worker-46daca4d slot 1 polling...[39m
+22:04:52 [[32minfo[39m] [32mWorker worker-46daca4d slot 2 polling...[39m
+22:10:17 [[32minfo[39m] [32mSIGINT received — graceful shutdown[39m
+22:10:17 [[32minfo[39m] [32mWorker worker-46daca4d shutting down...[39m
+22:10:18 [[32minfo[39m] [32mSIGINT received — graceful shutdown[39m
+22:10:18 [[32minfo[39m] [32mWorker worker-46daca4d shutting down...[39m
+22:10:19 [[31merror[39m] [31mWorker startup failed:[39m
+22:12:05 [[32minfo[39m] [32mSIGINT received — graceful shutdown[39m
+22:12:05 [[32minfo[39m] [32mWorker worker-5cc423a6 shutting down...[39m
+22:12:06 [[31merror[39m] [31mWorker startup failed:[39m
+22:12:52 [[32minfo[39m] [32mWorker worker-91b9096c starting with concurrency 3[39m
+22:12:53 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+22:12:53 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:12:53 [[32minfo[39m] [32mWorker worker-91b9096c slot 1 polling...[39m
+22:12:53 [[32minfo[39m] [32mWorker worker-91b9096c slot 0 polling...[39m
+22:12:53 [[32minfo[39m] [32mWorker worker-91b9096c slot 2 polling...[39m
+22:13:07 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+22:13:07 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:17:35 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+22:17:35 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:22:34 [[32minfo[39m] [32mWorker worker-691cf289 starting with concurrency 3[39m
+22:22:34 [[32minfo[39m] [32mMongoDB connected: mongodb://localhost:27017/queueflow[39m
+22:22:34 [[32minfo[39m] [32mRedis connected at localhost:6379[39m
+22:22:34 [[32minfo[39m] [32mWorker worker-691cf289 slot 0 polling...[39m
+22:22:34 [[32minfo[39m] [32mWorker worker-691cf289 slot 1 polling...[39m
+22:22:34 [[32minfo[39m] [32mWorker worker-691cf289 slot 2 polling...[39m

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="QueueFlow — Production-grade distributed job queue. Redis-backed, MongoDB persistent, Kafka-inspired." />
   <title>QueueFlow — Distributed Job Queue System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,40 +14,52 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <span class="logo-mark">
+    <a href="#" class="nav-logo" aria-label="QueueFlow home">
+      <span class="logo-mark" aria-hidden="true">
         <span class="logo-dot"></span>
         <span class="logo-dot"></span>
         <span class="logo-dot"></span>
       </span>
       QueueFlow
     </a>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#api">API</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#docs">Docs</a>
+    <div class="nav-links" id="navLinks" role="menubar">
+      <a href="#features"     role="menuitem">Features</a>
+      <a href="#architecture" role="menuitem">Architecture</a>
+      <a href="#api"          role="menuitem">API</a>
+      <a href="#dashboard"    role="menuitem">Dashboard</a>
+      <a href="#docs"         role="menuitem">Docs</a>
     </div>
     <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="sun-icon">☀</span>
-        <span class="moon-icon">☽</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Toggle theme">
+        <span class="sun-icon" aria-hidden="true">☀</span>
+        <span class="moon-icon" aria-hidden="true">☽</span>
       </button>
-      <a href="#simulation" class="btn btn-primary">Try Simulator</a>
+      <a href="#simulation" class="btn btn-primary" aria-label="Open the simulator">Try Simulator</a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<main id="main-content">
+
 <!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
+<section class="hero" id="hero" aria-label="Hero section">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb--a" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb--b" aria-hidden="true"></div>
+  <div class="hero-content reveal">
+    <div class="hero-badge" role="note">
+      <span class="badge-dot" aria-hidden="true"></span>
       Production-ready · Redis-backed · MongoDB persistent
     </div>
     <h1 class="hero-title">
@@ -60,255 +73,147 @@
     </p>
     <div class="hero-actions">
       <a href="#simulation" class="btn btn-primary btn-lg">Run Simulation</a>
-      <a href="#api" class="btn btn-ghost btn-lg">
-        <span class="btn-icon">⌘</span> View API
+      <a href="#api" class="btn btn-ghost btn-lg" aria-label="View REST API reference">
+        <span class="btn-icon" aria-hidden="true">⌘</span> View API
       </a>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats" aria-label="Key statistics">
       <div class="stat-item">
-        <span class="stat-value" data-count="50000">0</span>
+        <span class="stat-value" data-count="50000" aria-label="50,000 jobs per second">0</span>
         <span class="stat-label">jobs/sec</span>
       </div>
-      <div class="stat-divider"></div>
+      <div class="stat-divider" aria-hidden="true"></div>
       <div class="stat-item">
-        <span class="stat-value" data-count="99">0</span>
+        <span class="stat-value" data-count="99" aria-label="99% uptime">0</span>
         <span class="stat-label">% uptime</span>
       </div>
-      <div class="stat-divider"></div>
+      <div class="stat-divider" aria-hidden="true"></div>
       <div class="stat-item">
-        <span class="stat-value" data-count="12">0</span>
+        <span class="stat-value" data-count="12" aria-label="12ms average latency">0</span>
         <span class="stat-label">ms avg latency</span>
       </div>
     </div>
   </div>
-  <div class="hero-visual">
+  <div class="hero-visual reveal reveal--delay" aria-hidden="true">
     <div class="flow-canvas" id="flowCanvas">
-      <!-- Animated job flow visualization -->
       <div class="flow-producers">
-        <div class="flow-node producer" data-label="Producer A">
-          <div class="node-pulse"></div>
-          <span class="node-icon">⬡</span>
-        </div>
-        <div class="flow-node producer" data-label="Producer B">
-          <div class="node-pulse"></div>
-          <span class="node-icon">⬡</span>
-        </div>
-        <div class="flow-node producer" data-label="Producer C">
-          <div class="node-pulse"></div>
-          <span class="node-icon">⬡</span>
-        </div>
+        <div class="flow-node producer" data-label="Producer A"><div class="node-pulse"></div><span class="node-icon">⬡</span></div>
+        <div class="flow-node producer" data-label="Producer B"><div class="node-pulse"></div><span class="node-icon">⬡</span></div>
+        <div class="flow-node producer" data-label="Producer C"><div class="node-pulse"></div><span class="node-icon">⬡</span></div>
       </div>
       <div class="flow-queue">
         <div class="queue-label">Redis Queue</div>
-        <div class="queue-track">
-          <div class="queue-jobs" id="queueJobs"></div>
-        </div>
+        <div class="queue-track"><div class="queue-jobs" id="queueJobs"></div></div>
         <div class="queue-priority-label">FIFO + Priority</div>
       </div>
       <div class="flow-workers">
-        <div class="flow-node worker" data-label="Worker 1">
-          <div class="node-pulse worker-pulse"></div>
-          <span class="node-icon">⚙</span>
-        </div>
-        <div class="flow-node worker" data-label="Worker 2">
-          <div class="node-pulse worker-pulse"></div>
-          <span class="node-icon">⚙</span>
-        </div>
-        <div class="flow-node worker" data-label="Worker 3">
-          <div class="node-pulse worker-pulse"></div>
-          <span class="node-icon">⚙</span>
-        </div>
+        <div class="flow-node worker" data-label="Worker 1"><div class="node-pulse worker-pulse"></div><span class="node-icon">⚙</span></div>
+        <div class="flow-node worker" data-label="Worker 2"><div class="node-pulse worker-pulse"></div><span class="node-icon">⚙</span></div>
+        <div class="flow-node worker" data-label="Worker 3"><div class="node-pulse worker-pulse"></div><span class="node-icon">⚙</span></div>
       </div>
-      <svg class="flow-lines" id="flowLines" aria-hidden="true"></svg>
+      <svg class="flow-lines" id="flowLines"></svg>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section class="features" id="features">
+<section class="features" id="features" aria-labelledby="features-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-tag">Core Features</span>
-      <h2>Everything you need for<br />distributed job processing</h2>
+      <h2 id="features-heading">Everything you need for<br />distributed job processing</h2>
     </div>
     <div class="features-grid">
-      <div class="feature-card feature-card--accent">
-        <div class="feature-icon">⚡</div>
-        <h3>Redis-Backed Queue</h3>
-        <p>In-memory job queuing with sub-millisecond push/pop operations. Supports atomic operations and Lua scripting for advanced queue patterns.</p>
-        <div class="feature-tag">RPUSH · BLPOP · ZADD</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔄</div>
-        <h3>Exponential Backoff</h3>
-        <p>Intelligent retry mechanism with configurable jitter. Failed jobs requeue with increasing delays — 2s, 4s, 8s, 16s, 32s.</p>
-        <div class="feature-tag">Configurable · Jitter support</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚖</div>
-        <h3>Priority Scheduling</h3>
-        <p>Sorted set-based priority queue. Critical jobs jump the queue. Fair scheduling across priority tiers prevents starvation.</p>
-        <div class="feature-tag">1–10 priority levels</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏭</div>
-        <h3>Worker Concurrency</h3>
-        <p>Horizontally scalable worker processes. Each worker independently consumes jobs — no shared state, no locking overhead.</p>
-        <div class="feature-tag">N workers · Stateless</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🗄</div>
-        <h3>MongoDB Persistence</h3>
-        <p>Full job lifecycle stored in MongoDB. Queryable history, status tracking, and audit trail for every job from creation to completion.</p>
-        <div class="feature-tag">Indexed · TTL support</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Real-time Dashboard</h3>
-        <p>Live metrics via SSE. Monitor queue depth, worker throughput, success rate, and retry counts from a single pane of glass.</p>
-        <div class="feature-tag">SSE · Auto-refresh</div>
-      </div>
+      <article class="feature-card feature-card--accent reveal"><div class="feature-icon" aria-hidden="true">⚡</div><h3>Redis-Backed Queue</h3><p>In-memory job queuing with sub-millisecond push/pop. Supports atomic operations and Lua scripting for advanced patterns.</p><div class="feature-tag">RPUSH · BLPOP · ZADD</div></article>
+      <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🔄</div><h3>Exponential Backoff</h3><p>Intelligent retry with configurable jitter. Failed jobs requeue with increasing delays — 2s, 4s, 8s, 16s, 32s.</p><div class="feature-tag">Configurable · Jitter</div></article>
+      <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">⚖</div><h3>Priority Scheduling</h3><p>Sorted-set priority queue. Critical jobs jump the queue. Fair scheduling prevents starvation across priority tiers.</p><div class="feature-tag">1–10 priority levels</div></article>
+      <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🏭</div><h3>Worker Concurrency</h3><p>Horizontally scalable worker processes. Each slot independently consumes jobs — no shared state, no locking.</p><div class="feature-tag">N workers · Stateless</div></article>
+      <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">🗄</div><h3>MongoDB Persistence</h3><p>Full job lifecycle stored in MongoDB. Queryable history, status tracking, and audit trail from creation to completion.</p><div class="feature-tag">Indexed · TTL support</div></article>
+      <article class="feature-card reveal"><div class="feature-icon" aria-hidden="true">📊</div><h3>Real-time Dashboard</h3><p>Live metrics via SSE. Monitor queue depth, worker throughput, success rate, and retry counts from one pane.</p><div class="feature-tag">SSE · Auto-refresh</div></article>
     </div>
   </div>
 </section>
 
-<!-- ARCHITECTURE DIAGRAM -->
-<section class="architecture" id="architecture">
+<!-- ARCHITECTURE -->
+<section class="architecture" id="architecture" aria-labelledby="arch-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-tag">Architecture</span>
-      <h2>Producer-Consumer at its core</h2>
+      <h2 id="arch-heading">Producer-Consumer at its core</h2>
     </div>
-    <div class="arch-diagram">
+    <div class="arch-diagram reveal" role="img" aria-label="Architecture: producers feed Redis priority queue, workers dequeue and persist to MongoDB">
       <div class="arch-layer arch-layer--producers">
         <div class="arch-layer-label">Producers</div>
         <div class="arch-nodes">
-          <div class="arch-node">
-            <div class="arch-node-icon">🌐</div>
-            <span>REST API</span>
-            <code>POST /job</code>
-          </div>
-          <div class="arch-node">
-            <div class="arch-node-icon">📅</div>
-            <span>Cron Jobs</span>
-            <code>Scheduled</code>
-          </div>
-          <div class="arch-node">
-            <div class="arch-node-icon">🔗</div>
-            <span>Webhooks</span>
-            <code>Events</code>
-          </div>
+          <div class="arch-node"><div class="arch-node-icon" aria-hidden="true">🌐</div><span>REST API</span><code>POST /job</code></div>
+          <div class="arch-node"><div class="arch-node-icon" aria-hidden="true">📅</div><span>Cron Jobs</span><code>Scheduled</code></div>
+          <div class="arch-node"><div class="arch-node-icon" aria-hidden="true">🔗</div><span>Webhooks</span><code>Events</code></div>
         </div>
       </div>
-      <div class="arch-arrow arch-arrow--right">
-        <div class="arch-arrow-line">
-          <span class="arch-arrow-label">Enqueue</span>
-        </div>
-      </div>
+      <div class="arch-arrow" aria-hidden="true"><div class="arch-arrow-line"><span class="arch-arrow-label">Enqueue</span></div></div>
       <div class="arch-layer arch-layer--queue">
         <div class="arch-layer-label">Queue Layer</div>
         <div class="arch-queue-visual">
-          <div class="arch-redis">
-            <span>Redis</span>
-            <div class="redis-queues">
-              <div class="redis-queue redis-queue--high">HIGH</div>
-              <div class="redis-queue redis-queue--med">MED</div>
-              <div class="redis-queue redis-queue--low">LOW</div>
-            </div>
-          </div>
-          <div class="arch-mongo">
-            <span>MongoDB</span>
-            <div class="mongo-badge">Persistent Store</div>
-          </div>
+          <div class="arch-redis"><span>Redis</span><div class="redis-queues"><div class="redis-queue redis-queue--high">HIGH</div><div class="redis-queue redis-queue--med">MED</div><div class="redis-queue redis-queue--low">LOW</div></div></div>
+          <div class="arch-mongo"><span>MongoDB</span><div class="mongo-badge">Persistent</div></div>
         </div>
       </div>
-      <div class="arch-arrow arch-arrow--right">
-        <div class="arch-arrow-line">
-          <span class="arch-arrow-label">Dequeue</span>
-        </div>
-      </div>
+      <div class="arch-arrow" aria-hidden="true"><div class="arch-arrow-line"><span class="arch-arrow-label">Dequeue</span></div></div>
       <div class="arch-layer arch-layer--workers">
         <div class="arch-layer-label">Workers</div>
         <div class="arch-nodes">
-          <div class="arch-node arch-node--worker">
-            <div class="arch-node-icon">⚙</div>
-            <span>Worker 1</span>
-            <code>Processing</code>
-          </div>
-          <div class="arch-node arch-node--worker">
-            <div class="arch-node-icon">⚙</div>
-            <span>Worker 2</span>
-            <code>Idle</code>
-          </div>
-          <div class="arch-node arch-node--worker">
-            <div class="arch-node-icon">⚙</div>
-            <span>Worker N</span>
-            <code>Retrying</code>
-          </div>
+          <div class="arch-node arch-node--worker"><div class="arch-node-icon" aria-hidden="true">⚙</div><span>Worker 1</span><code>Processing</code></div>
+          <div class="arch-node arch-node--worker"><div class="arch-node-icon" aria-hidden="true">⚙</div><span>Worker 2</span><code>Idle</code></div>
+          <div class="arch-node arch-node--worker"><div class="arch-node-icon" aria-hidden="true">⚙</div><span>Worker N</span><code>Retrying</code></div>
         </div>
       </div>
     </div>
-    <div class="arch-retry-flow">
-      <div class="retry-label">Retry Flow (Exponential Backoff)</div>
-      <div class="retry-steps">
-        <div class="retry-step">Fail</div>
-        <div class="retry-arrow">→ 2s →</div>
-        <div class="retry-step">Retry 1</div>
-        <div class="retry-arrow">→ 4s →</div>
-        <div class="retry-step">Retry 2</div>
-        <div class="retry-arrow">→ 8s →</div>
-        <div class="retry-step">Retry 3</div>
-        <div class="retry-arrow">→ Dead Letter</div>
-        <div class="retry-step retry-step--dead">DLQ</div>
+    <div class="arch-retry-flow reveal">
+      <div class="retry-label">Retry Flow — Exponential Backoff</div>
+      <div class="retry-steps" role="list">
+        <div class="retry-step" role="listitem">Fail</div>
+        <div class="retry-arrow" aria-hidden="true">→ 2s →</div>
+        <div class="retry-step" role="listitem">Retry 1</div>
+        <div class="retry-arrow" aria-hidden="true">→ 4s →</div>
+        <div class="retry-step" role="listitem">Retry 2</div>
+        <div class="retry-arrow" aria-hidden="true">→ 8s →</div>
+        <div class="retry-step" role="listitem">Retry 3</div>
+        <div class="retry-arrow" aria-hidden="true">→ Dead Letter →</div>
+        <div class="retry-step retry-step--dead" role="listitem">DLQ</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- API SECTION -->
-<section class="api-section" id="api">
+<!-- API -->
+<section class="api-section" id="api" aria-labelledby="api-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-tag">REST API</span>
-      <h2>Simple, powerful API</h2>
+      <h2 id="api-heading">Simple, powerful API</h2>
     </div>
-    <div class="api-grid">
-      <div class="api-sidebar">
-        <div class="api-endpoint active" data-endpoint="create">
-          <span class="method method--post">POST</span>
-          <code>/job</code>
-        </div>
-        <div class="api-endpoint" data-endpoint="get-one">
-          <span class="method method--get">GET</span>
-          <code>/job/:id</code>
-        </div>
-        <div class="api-endpoint" data-endpoint="get-all">
-          <span class="method method--get">GET</span>
-          <code>/jobs</code>
-        </div>
-      </div>
-      <div class="api-content">
+    <div class="api-grid reveal">
+      <nav class="api-sidebar" aria-label="API endpoints">
+        <button class="api-endpoint active" data-endpoint="create"  aria-selected="true"  aria-controls="panel-create"><span class="method method--post">POST</span><code>/job</code></button>
+        <button class="api-endpoint"        data-endpoint="get-one" aria-selected="false" aria-controls="panel-get-one"><span class="method method--get">GET</span><code>/job/:id</code></button>
+        <button class="api-endpoint"        data-endpoint="get-all" aria-selected="false" aria-controls="panel-get-all"><span class="method method--get">GET</span><code>/jobs</code></button>
+        <button class="api-endpoint"        data-endpoint="health"  aria-selected="false" aria-controls="panel-health"><span class="method method--get">GET</span><code>/health</code></button>
+      </nav>
+      <div class="api-content" role="tabpanel">
         <div class="api-panel" id="panel-create">
-          <div class="api-panel-header">
-            <span class="method method--post">POST</span>
-            <code class="api-url">https://api.queueflow.io/job</code>
-          </div>
+          <div class="api-panel-header"><span class="method method--post">POST</span><code class="api-url">https://api.queueflow.io/job</code><button class="copy-btn" data-copy='{"task":"send_email","priority":8}' aria-label="Copy request body">Copy</button></div>
           <div class="api-body">
             <div class="code-label">Request Body</div>
             <pre class="code-block"><code>{
   <span class="key">"task"</span>: <span class="str">"send_email"</span>,
   <span class="key">"priority"</span>: <span class="num">8</span>,
-  <span class="key">"payload"</span>: {
-    <span class="key">"to"</span>: <span class="str">"user@example.com"</span>,
-    <span class="key">"template"</span>: <span class="str">"welcome"</span>
-  }
+  <span class="key">"payload"</span>: { <span class="key">"to"</span>: <span class="str">"user@example.com"</span> }
 }</code></pre>
             <div class="code-label">Response <span class="code-label-status status-ok">201 Created</span></div>
             <pre class="code-block"><code>{
   <span class="key">"success"</span>: <span class="bool">true</span>,
   <span class="key">"job"</span>: {
     <span class="key">"_id"</span>: <span class="str">"64f3a1b2c9e8d70012345678"</span>,
-    <span class="key">"task"</span>: <span class="str">"send_email"</span>,
     <span class="key">"status"</span>: <span class="str">"queued"</span>,
     <span class="key">"priority"</span>: <span class="num">8</span>,
     <span class="key">"retries"</span>: <span class="num">0</span>,
@@ -318,42 +223,44 @@
           </div>
         </div>
         <div class="api-panel hidden" id="panel-get-one">
-          <div class="api-panel-header">
-            <span class="method method--get">GET</span>
-            <code class="api-url">https://api.queueflow.io/job/:id</code>
-          </div>
+          <div class="api-panel-header"><span class="method method--get">GET</span><code class="api-url">https://api.queueflow.io/job/:id</code></div>
           <div class="api-body">
             <div class="code-label">Response <span class="code-label-status status-ok">200 OK</span></div>
             <pre class="code-block"><code>{
   <span class="key">"success"</span>: <span class="bool">true</span>,
   <span class="key">"job"</span>: {
-    <span class="key">"_id"</span>: <span class="str">"64f3a1b2c9e8d70012345678"</span>,
-    <span class="key">"task"</span>: <span class="str">"send_email"</span>,
     <span class="key">"status"</span>: <span class="str">"completed"</span>,
-    <span class="key">"priority"</span>: <span class="num">8</span>,
-    <span class="key">"retries"</span>: <span class="num">0</span>,
     <span class="key">"result"</span>: { <span class="key">"sent"</span>: <span class="bool">true</span> },
-    <span class="key">"createdAt"</span>: <span class="str">"2024-01-15T10:30:00Z"</span>,
+    <span class="key">"durationMs"</span>: <span class="num">142</span>,
     <span class="key">"completedAt"</span>: <span class="str">"2024-01-15T10:30:02Z"</span>
   }
 }</code></pre>
           </div>
         </div>
         <div class="api-panel hidden" id="panel-get-all">
-          <div class="api-panel-header">
-            <span class="method method--get">GET</span>
-            <code class="api-url">https://api.queueflow.io/jobs?status=queued&limit=20</code>
-          </div>
+          <div class="api-panel-header"><span class="method method--get">GET</span><code class="api-url">https://api.queueflow.io/jobs?status=queued&limit=20</code></div>
           <div class="api-body">
             <div class="code-label">Response <span class="code-label-status status-ok">200 OK</span></div>
             <pre class="code-block"><code>{
   <span class="key">"success"</span>: <span class="bool">true</span>,
-  <span class="key">"jobs"</span>: [<span class="comment">/* array of job objects */</span>],
+  <span class="key">"jobs"</span>: [<span class="comment">/* array */</span>],
   <span class="key">"pagination"</span>: {
-    <span class="key">"total"</span>: <span class="num">1284</span>,
-    <span class="key">"page"</span>: <span class="num">1</span>,
-    <span class="key">"limit"</span>: <span class="num">20</span>,
-    <span class="key">"pages"</span>: <span class="num">65</span>
+    <span class="key">"total"</span>: <span class="num">1284</span>, <span class="key">"page"</span>: <span class="num">1</span>,
+    <span class="key">"limit"</span>: <span class="num">20</span>,  <span class="key">"pages"</span>: <span class="num">65</span>
+  }
+}</code></pre>
+          </div>
+        </div>
+        <div class="api-panel hidden" id="panel-health">
+          <div class="api-panel-header"><span class="method method--get">GET</span><code class="api-url">https://api.queueflow.io/health</code></div>
+          <div class="api-body">
+            <div class="code-label">Response <span class="code-label-status status-ok">200 OK</span></div>
+            <pre class="code-block"><code>{
+  <span class="key">"status"</span>: <span class="str">"ok"</span>,
+  <span class="key">"uptime"</span>: <span class="num">3600</span>,
+  <span class="key">"services"</span>: {
+    <span class="key">"redis"</span>: <span class="str">"ok"</span>,
+    <span class="key">"mongo"</span>: <span class="str">"ok"</span>
   }
 }</code></pre>
           </div>
@@ -364,245 +271,155 @@
 </section>
 
 <!-- DASHBOARD -->
-<section class="dashboard-section" id="dashboard">
+<section class="dashboard-section" id="dashboard" aria-labelledby="dash-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-tag">Live Dashboard</span>
-      <h2>Real-time system metrics</h2>
-      <div class="dashboard-live-badge">
-        <span class="live-dot"></span> Live
-      </div>
+      <h2 id="dash-heading">Real-time system metrics</h2>
+      <div class="dashboard-live-badge" role="status"><span class="live-dot" aria-hidden="true"></span>Live</div>
     </div>
-    <div class="dashboard-grid">
-      <div class="metric-card">
-        <div class="metric-label">Queue Depth</div>
-        <div class="metric-value" id="metricQueueDepth">0</div>
-        <div class="metric-trend trend-up" id="trendQueueDepth">↑ 12%</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Jobs Processed</div>
-        <div class="metric-value" id="metricProcessed">0</div>
-        <div class="metric-trend trend-up">↑ steady</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Success Rate</div>
-        <div class="metric-value" id="metricSuccessRate">—</div>
-        <div class="metric-trend" id="trendSuccess">calculating...</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Avg Latency</div>
-        <div class="metric-value" id="metricLatency">—</div>
-        <div class="metric-trend">ms per job</div>
-      </div>
+    <div class="dashboard-grid reveal" role="list" aria-label="Metric cards">
+      <div class="metric-card" role="listitem"><div class="metric-label">Queue Depth</div><div class="metric-value" id="metricQueueDepth" aria-live="polite">0</div><div class="metric-trend trend-up">↑ 12%</div></div>
+      <div class="metric-card" role="listitem"><div class="metric-label">Jobs Processed</div><div class="metric-value" id="metricProcessed" aria-live="polite">0</div><div class="metric-trend trend-up">↑ steady</div></div>
+      <div class="metric-card" role="listitem"><div class="metric-label">Success Rate</div><div class="metric-value" id="metricSuccessRate" aria-live="polite">—</div><div class="metric-trend">calculating...</div></div>
+      <div class="metric-card" role="listitem"><div class="metric-label">Avg Latency</div><div class="metric-value" id="metricLatency" aria-live="polite">—</div><div class="metric-trend">ms per job</div></div>
     </div>
-    <div class="dashboard-charts">
+    <div class="dashboard-charts reveal">
       <div class="chart-card chart-card--wide">
-        <div class="chart-header">
-          <span class="chart-title">Throughput (jobs/s)</span>
-          <div class="chart-legend">
-            <span class="legend-dot legend-dot--processed"></span> Processed
-            <span class="legend-dot legend-dot--failed"></span> Failed
-          </div>
-        </div>
-        <canvas id="throughputChart" height="160"></canvas>
+        <div class="chart-header"><span class="chart-title">Throughput (jobs/s)</span><div class="chart-legend"><span><span class="legend-dot legend-dot--processed" aria-hidden="true"></span>Processed</span><span><span class="legend-dot legend-dot--failed" aria-hidden="true"></span>Failed</span></div></div>
+        <canvas id="throughputChart" height="160" role="img" aria-label="Line chart showing job throughput over time">Throughput chart updating every 2 seconds.</canvas>
       </div>
       <div class="chart-card">
-        <div class="chart-header">
-          <span class="chart-title">Job Status Distribution</span>
-        </div>
-        <canvas id="statusChart" height="160"></canvas>
+        <div class="chart-header"><span class="chart-title">Status Distribution</span></div>
+        <canvas id="statusChart" height="160" role="img" aria-label="Doughnut chart showing jobs by status: completed, processing, queued, failed">Status distribution chart.</canvas>
       </div>
     </div>
-    <div class="job-list-header">
+    <div class="job-list-header reveal">
       <span>Recent Jobs</span>
-      <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="all">All</button>
-        <button class="filter-tab" data-filter="queued">Queued</button>
-        <button class="filter-tab" data-filter="processing">Processing</button>
-        <button class="filter-tab" data-filter="completed">Completed</button>
-        <button class="filter-tab" data-filter="failed">Failed</button>
+      <div class="filter-tabs" role="group" aria-label="Filter jobs by status">
+        <button class="filter-tab active" data-filter="all"        aria-pressed="true">All</button>
+        <button class="filter-tab"        data-filter="queued"     aria-pressed="false">Queued</button>
+        <button class="filter-tab"        data-filter="processing" aria-pressed="false">Processing</button>
+        <button class="filter-tab"        data-filter="completed"  aria-pressed="false">Completed</button>
+        <button class="filter-tab"        data-filter="failed"     aria-pressed="false">Failed</button>
       </div>
     </div>
-    <div class="job-list" id="jobList">
-      <!-- Populated by dashboard.js -->
-    </div>
+    <div class="job-list reveal" id="jobList" role="table" aria-label="Recent jobs"></div>
   </div>
 </section>
 
-<!-- SIMULATION UI -->
-<section class="simulation-section" id="simulation">
+<!-- SIMULATION -->
+<section class="simulation-section" id="simulation" aria-labelledby="sim-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-tag">Simulator</span>
-      <h2>See it in action</h2>
+      <h2 id="sim-heading">See it in action</h2>
     </div>
     <div class="sim-grid">
-      <div class="sim-controls">
+      <aside class="sim-controls reveal" aria-label="Simulation controls">
         <div class="sim-control-group">
-          <label class="sim-label">Number of Jobs</label>
-          <div class="sim-slider-row">
-            <input type="range" min="1" max="100" value="20" id="simJobCount" class="sim-slider" />
-            <span class="sim-value" id="simJobCountVal">20</span>
-          </div>
+          <label class="sim-label" for="simJobCount">Number of Jobs</label>
+          <div class="sim-slider-row"><input type="range" min="1" max="100" value="20" step="1" id="simJobCount" class="sim-slider" aria-valuenow="20" /><span class="sim-value" id="simJobCountVal" aria-live="polite">20</span></div>
         </div>
         <div class="sim-control-group">
-          <label class="sim-label">Workers</label>
-          <div class="sim-slider-row">
-            <input type="range" min="1" max="10" value="3" id="simWorkerCount" class="sim-slider" />
-            <span class="sim-value" id="simWorkerCountVal">3</span>
-          </div>
+          <label class="sim-label" for="simWorkerCount">Workers</label>
+          <div class="sim-slider-row"><input type="range" min="1" max="10" value="3" step="1" id="simWorkerCount" class="sim-slider" aria-valuenow="3" /><span class="sim-value" id="simWorkerCountVal" aria-live="polite">3</span></div>
         </div>
         <div class="sim-control-group">
-          <label class="sim-label">Failure Rate</label>
-          <div class="sim-slider-row">
-            <input type="range" min="0" max="50" value="15" id="simFailRate" class="sim-slider" />
-            <span class="sim-value" id="simFailRateVal">15%</span>
-          </div>
+          <label class="sim-label" for="simFailRate">Failure Rate</label>
+          <div class="sim-slider-row"><input type="range" min="0" max="50" value="15" step="1" id="simFailRate" class="sim-slider" aria-valuenow="15" /><span class="sim-value" id="simFailRateVal" aria-live="polite">15%</span></div>
         </div>
         <div class="sim-control-group">
-          <label class="sim-label">Processing Speed</label>
-          <div class="sim-speed-btns">
-            <button class="speed-btn" data-speed="0.5">0.5x</button>
-            <button class="speed-btn active" data-speed="1">1x</button>
-            <button class="speed-btn" data-speed="2">2x</button>
-            <button class="speed-btn" data-speed="5">5x</button>
-          </div>
+          <fieldset><legend class="sim-label">Processing Speed</legend>
+            <div class="sim-speed-btns" role="group">
+              <button class="speed-btn" data-speed="0.5" aria-pressed="false">0.5x</button>
+              <button class="speed-btn active" data-speed="1" aria-pressed="true">1x</button>
+              <button class="speed-btn" data-speed="2" aria-pressed="false">2x</button>
+              <button class="speed-btn" data-speed="5" aria-pressed="false">5x</button>
+            </div>
+          </fieldset>
         </div>
-        <div class="sim-task-types">
-          <label class="sim-label">Task Types</label>
-          <div class="task-type-grid">
-            <label class="task-checkbox"><input type="checkbox" checked value="send_email" /> send_email</label>
-            <label class="task-checkbox"><input type="checkbox" checked value="resize_image" /> resize_image</label>
-            <label class="task-checkbox"><input type="checkbox" value="generate_pdf" /> generate_pdf</label>
-            <label class="task-checkbox"><input type="checkbox" checked value="sync_crm" /> sync_crm</label>
-          </div>
+        <div class="sim-control-group">
+          <fieldset><legend class="sim-label">Task Types</legend>
+            <div class="task-type-grid">
+              <label class="task-checkbox"><input type="checkbox" checked value="send_email" />send_email</label>
+              <label class="task-checkbox"><input type="checkbox" checked value="resize_image" />resize_image</label>
+              <label class="task-checkbox"><input type="checkbox"       value="generate_pdf" />generate_pdf</label>
+              <label class="task-checkbox"><input type="checkbox" checked value="sync_crm" />sync_crm</label>
+            </div>
+          </fieldset>
         </div>
         <div class="sim-actions">
-          <button class="btn btn-primary btn-full" id="simStart">▶ Start Simulation</button>
-          <button class="btn btn-ghost btn-full" id="simReset">↺ Reset</button>
+          <button class="btn btn-primary btn-full" id="simStart"><span class="sim-btn-icon" aria-hidden="true">▶</span> Start Simulation</button>
+          <button class="btn btn-ghost btn-full"   id="simReset"><span aria-hidden="true">↺</span> Reset</button>
         </div>
-      </div>
-      <div class="sim-output">
-        <div class="sim-queue-panel">
-          <div class="sim-panel-title">Queue State</div>
-          <div class="sim-queue-visual" id="simQueueVisual">
-            <div class="sim-empty">Press Start to begin simulation</div>
-          </div>
-        </div>
-        <div class="sim-workers-panel">
-          <div class="sim-panel-title">Workers</div>
-          <div class="sim-workers-visual" id="simWorkersVisual"></div>
-        </div>
-        <div class="sim-log-panel">
-          <div class="sim-panel-title">Event Log</div>
-          <div class="sim-log" id="simLog">
-            <div class="log-entry log-entry--system">System ready. Configure and start simulation.</div>
-          </div>
-        </div>
+      </aside>
+      <div class="sim-output" aria-live="polite">
+        <div class="sim-queue-panel"><div class="sim-panel-title">Queue State</div><div class="sim-queue-visual" id="simQueueVisual"><div class="sim-empty"><span class="sim-empty-icon" aria-hidden="true">⬡</span><span>Press Start to begin</span></div></div></div>
+        <div class="sim-workers-panel"><div class="sim-panel-title">Workers</div><div class="sim-workers-visual" id="simWorkersVisual"></div></div>
+        <div class="sim-log-panel"><div class="sim-panel-title">Event Log</div><div class="sim-log" id="simLog" role="log" aria-live="polite"><div class="log-entry log-entry--system">System ready. Configure and start simulation.</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- DOCS -->
-<section class="docs-section" id="docs">
+<section class="docs-section" id="docs" aria-labelledby="docs-heading">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-tag">Documentation</span>
-      <h2>Get up and running</h2>
+      <h2 id="docs-heading">Get up and running</h2>
     </div>
     <div class="docs-grid">
-      <div class="doc-card">
-        <div class="doc-icon">🚀</div>
-        <h3>Quick Start</h3>
-        <pre class="doc-code"><code><span class="comment"># Clone & install</span>
+      <div class="doc-card reveal"><div class="doc-icon" aria-hidden="true">🚀</div><h3>Quick Start</h3><pre class="doc-code"><code><span class="comment"># Clone &amp; install</span>
 git clone https://github.com/you/queueflow
-cd queueflow/backend
-npm install
+cd queueflow/backend &amp;&amp; npm install
 
-<span class="comment"># Start dependencies</span>
+<span class="comment"># Start services</span>
 docker-compose up -d redis mongo
-
-<span class="comment"># Start backend</span>
 npm run dev
-
-<span class="comment"># Start worker</span>
-npm run worker</code></pre>
-      </div>
-      <div class="doc-card">
-        <div class="doc-icon">⚙</div>
-        <h3>Environment Setup</h3>
-        <pre class="doc-code"><code><span class="comment"># backend/.env</span>
+npm run worker</code></pre></div>
+      <div class="doc-card reveal"><div class="doc-icon" aria-hidden="true">⚙</div><h3>Environment Setup</h3><pre class="doc-code"><code><span class="comment"># backend/.env</span>
 PORT=3000
 NODE_ENV=development
-
-MONGO_URI=mongodb://localhost:27017/queueflow
+MONGO_URI=mongodb://localhost/queueflow
 REDIS_HOST=localhost
 REDIS_PORT=6379
-
 MAX_RETRIES=5
-RETRY_DELAY_MS=2000
-WORKER_CONCURRENCY=3
-QUEUE_NAME=job_queue</code></pre>
-      </div>
-      <div class="doc-card">
-        <div class="doc-icon">🧪</div>
-        <h3>Test with cURL</h3>
-        <pre class="doc-code"><code><span class="comment"># Submit a job</span>
+WORKER_CONCURRENCY=3</code></pre></div>
+      <div class="doc-card reveal"><div class="doc-icon" aria-hidden="true">🧪</div><h3>Test with cURL</h3><pre class="doc-code"><code><span class="comment"># Submit a job</span>
 curl -X POST http://localhost:3000/job \
   -H "Content-Type: application/json" \
-  -d '{
-    "task": "send_email",
-    "priority": 9,
-    "payload": {"to": "you@example.com"}
-  }'
+  -d '{"task":"send_email","priority":9}'
 
 <span class="comment"># Check status</span>
-curl http://localhost:3000/job/{id}</code></pre>
-      </div>
+curl http://localhost:3000/job/{id}</code></pre></div>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="nav-logo">
-          <span class="logo-mark">
-            <span class="logo-dot"></span>
-            <span class="logo-dot"></span>
-            <span class="logo-dot"></span>
-          </span>
-          QueueFlow
-        </span>
-        <p>Distributed job queue system inspired by Kafka & RabbitMQ. Built for production.</p>
+        <a href="#" class="nav-logo" aria-label="QueueFlow home"><span class="logo-mark" aria-hidden="true"><span class="logo-dot"></span><span class="logo-dot"></span><span class="logo-dot"></span></span>QueueFlow</a>
+        <p>Distributed job queue inspired by Kafka &amp; RabbitMQ. Built for production.</p>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <span class="footer-col-title">Product</span>
-          <a href="#features">Features</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#simulation">Simulator</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-title">Developers</span>
-          <a href="#api">API Reference</a>
-          <a href="#docs">Quick Start</a>
-          <a href="#">GitHub</a>
-        </div>
-      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <div class="footer-col"><span class="footer-col-title">Product</span><a href="#features">Features</a><a href="#architecture">Architecture</a><a href="#simulation">Simulator</a></div>
+        <div class="footer-col"><span class="footer-col-title">Developers</span><a href="#api">API Reference</a><a href="#docs">Quick Start</a><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></div>
+      </nav>
     </div>
-    <div class="footer-bottom">
-      <span>© 2024 QueueFlow. MIT License.</span>
-      <span>Built with Node.js · Redis · MongoDB</span>
-    </div>
+    <div class="footer-bottom"><span>© 2024 QueueFlow. MIT License.</span><span>Node.js · Redis · MongoDB</span></div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="scripts/api.js"></script>
+<script src="scripts/toast.js"></script>
 <script src="scripts/dashboard.js"></script>
 <script src="scripts/simulation.js"></script>
 <script src="scripts/main.js"></script>

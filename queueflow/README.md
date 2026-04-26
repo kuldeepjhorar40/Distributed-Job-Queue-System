@@ -479,7 +479,3 @@ That's it. The worker will automatically route jobs with `task: "my_custom_task"
 Please follow the existing code style (single quotes, `'use strict'`, explicit error handling).
 
 ---
-
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
